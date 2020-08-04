@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <TargetFramework>netcoreapp3.1</TargetFramework>
-        <RootNamespace>prj_salves</RootNamespace>
+        <RootNamespace>prj_sales</RootNamespace>
     </PropertyGroup>
 
 </Project>

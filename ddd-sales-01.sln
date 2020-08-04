@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "prj-salves", "prj-salves\prj-salves.csproj", "{88CAB84A-3667-4C25-9735-EFA1FC7A6CB5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "prj-sales", "prj-salves\prj-sales.csproj", "{942841A5-B3EA-4FA1-B10A-8EE87498C439}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -12,5 +12,9 @@ Global
 		{88CAB84A-3667-4C25-9735-EFA1FC7A6CB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{88CAB84A-3667-4C25-9735-EFA1FC7A6CB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{88CAB84A-3667-4C25-9735-EFA1FC7A6CB5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{942841A5-B3EA-4FA1-B10A-8EE87498C439}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{942841A5-B3EA-4FA1-B10A-8EE87498C439}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{942841A5-B3EA-4FA1-B10A-8EE87498C439}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{942841A5-B3EA-4FA1-B10A-8EE87498C439}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
