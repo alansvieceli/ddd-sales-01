@@ -5,4 +5,9 @@
         <RootNamespace>prj_sales</RootNamespace>
     </PropertyGroup>
 
+    <ItemGroup>
+      <Folder Include="DAL" />
+      <Folder Include="Helpers" />
+    </ItemGroup>
+
 </Project>
