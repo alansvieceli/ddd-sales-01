@@ -4,12 +4,15 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using prj_sales.DAL;
 
-namespace prj_salves
+namespace prj_sales
 {
     public class Startup
     {
@@ -24,6 +27,14 @@ namespace prj_salves
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            services.AddDbContext<ApplicationDbContext>( options => 
+                options.UseSqlServer(
+                    "Server=localhost; Database=CursoCSharpVendasSimples; Trusted_Connection=False; MultipleActiveResultSets=True; User Id=sa;Password=@agesune1;"));
+
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>(); //para trabalhar com sessão
+            services.AddSession();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,6 +1,6 @@
 using System;
 
-namespace prj_salves.Models
+namespace prj_sales.Models
 {
     public class ErrorViewModel
     {

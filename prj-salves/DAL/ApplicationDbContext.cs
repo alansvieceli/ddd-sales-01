@@ -1,12 +1,19 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.Diagnostics.CodeAnalysis;
+using Microsoft.EntityFrameworkCore;
 using prj_sales.Entities;
 
 namespace prj_sales.DAL
 {
     public class ApplicationDbContext : DbContext
     {
+
+        public ApplicationDbContext(DbContextOptions options) : base(options)
+        {
+            
+        }
+        
         public DbSet<Usuario> Usuario { get; set; }
-        public DbSet<Categoria> Categorias { get; set; }
+        public DbSet<Categoria> Categoria { get; set; }
         public DbSet<Produto> Produto { get; set; }
         public DbSet<Cliente> Cliente { get; set; }
         public DbSet<Venda> Venda { get; set; }
@@ -15,6 +22,14 @@ namespace prj_sales.DAL
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+            
+            modelBuilder.Entity<Produto>()
+                .Property(p => p.Valor)
+                .HasColumnType("decimal(9,2)");
+            
+            modelBuilder.Entity<Venda>()
+                .Property(p => p.Total)
+                .HasColumnType("decimal(9,2)");
 
             modelBuilder.Entity<VendaProdutos>()
                 .HasKey(vp => new {vp.CodigoVenda, vp.CodigoProduto});
@@ -28,6 +43,14 @@ namespace prj_sales.DAL
                 .HasOne(x => x.Produto)
                 .WithMany(x => x.Vendas)
                 .HasForeignKey( x => x.CodigoProduto);
+            
+            modelBuilder.Entity<VendaProdutos>()
+                .Property(p => p.ValorTotal)
+                .HasColumnType("decimal(9,2)");
+            
+            modelBuilder.Entity<VendaProdutos>()
+                .Property(p => p.ValorUnitario)
+                .HasColumnType("decimal(9,2)");
 
         }
     }

@@ -1,19 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using prj_salves.Models;
+using prj_sales.DAL;
+using prj_sales.Entities;
+using prj_sales.Models;
 
-namespace prj_salves.Controllers
+namespace prj_sales.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+       
+        public HomeController(ILogger<HomeController> logger, ApplicationDbContext repository)
         {
             _logger = logger;
         }
