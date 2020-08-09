@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System.Collections.Generic;
+using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using prj_sales.DAL;
@@ -11,7 +12,7 @@ namespace prj_sales.Controllers
     {
         private readonly ILogger<HomeController> _logger;
        
-        public HomeController(ILogger<HomeController> logger, ApplicationDbContext repository)
+        public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
         }
