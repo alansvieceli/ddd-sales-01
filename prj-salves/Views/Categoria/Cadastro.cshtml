@@ -1,5 +1,25 @@
-﻿@{
+﻿@model prj_sales.Models.CategoriaViewModel
+@{
     ViewData["Title"] = "Categoria - Cadastro";
+    var disabled = Model.Codigo == null ? "disabled" : string.Empty;
 }
 
 <h2>@ViewData["Title"]</h2>
+<hr />
+
+<form asp-controller="Categoria" asp-action="Cadastro" method="post">
+    <input type="hidden" asp-for="Codigo" value="@Model.Codigo"/>
+    <div class="form-group">
+        <div class="col-4">
+            <label class="control-label">Descrição</label>
+            <input type="text" asp-for="Descricao" value="@Model.Descricao" class="form-control" aria-label=""/>
+            <span asp-validation-for="Descricao" class="text-danger"></span>
+        </div>
+        <br />
+        <div class="col">
+            <button type="submit" class="btn btn-success">Gravar</button>
+            <button type="button" class="btn btn-danger" onclick="location.href='@Url.Action("Excluir", "Categoria", new { id = Model.Codigo })'" @disabled>Excluir</button>
+            <button type="button" class="btn btn-warning" onclick="location.href='@Url.Action("Index", "Categoria")'">Voltar</button>
+        </div>
+    </div>
+</form>
