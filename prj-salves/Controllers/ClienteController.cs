@@ -16,7 +16,6 @@ namespace prj_sales.Controllers
         {
             this._context = context;
         }
-        
         public IActionResult Index()
         {
             IEnumerable<Cliente> lista = this._context.Cliente.ToList();
