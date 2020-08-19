@@ -20,6 +20,7 @@ namespace prj_sales.Controllers
         {
             this._context = context;
         }
+        
         public IActionResult Index()
         {
             IEnumerable<Produto> lista = this._context.Produto.Include(x => x.Categoria).ToList();
@@ -90,6 +91,12 @@ namespace prj_sales.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpGet("Produto/ValorUnitario/{id}")]
+        public decimal GetValorProduto(int id)
+        {
+            return this._context.Produto.Where(x => x.Codigo == id).Select(x => x.Valor).FirstOrDefault();
+        }
+
         private IEnumerable<SelectListItem> GetListaCategorias()
         {
             List<SelectListItem> lista = new List<SelectListItem>();
@@ -107,7 +114,6 @@ namespace prj_sales.Controllers
                     Text = item.Descricao
                 });
             }
-
             return lista;
         }
         

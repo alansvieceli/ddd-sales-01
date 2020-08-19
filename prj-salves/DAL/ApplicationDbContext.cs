@@ -38,11 +38,11 @@ namespace prj_sales.DAL
                 .HasOne(x => x.Venda)
                 .WithMany(x => x.Produtos)
                 .HasForeignKey( x => x.CodigoVenda);
-            
+
             modelBuilder.Entity<VendaProdutos>()
                 .HasOne(x => x.Produto)
                 .WithMany(x => x.Vendas)
-                .HasForeignKey( x => x.CodigoProduto);
+                .HasForeignKey(x => x.CodigoProduto);
             
             modelBuilder.Entity<VendaProdutos>()
                 .Property(p => p.ValorTotal)

@@ -10,12 +10,23 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using prj_sales.DAL;
 
 namespace prj_sales
 {
     public class Startup
     {
+        public static readonly ILoggerFactory SalesLoggerFactory
+            = LoggerFactory.Create(builder =>
+            {
+                builder
+                    .AddFilter((category, level) =>
+                        category == DbLoggerCategory.Database.Command.Name
+                        && level == LogLevel.Debug)
+                    .AddConsole();
+            });
+        
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -29,7 +40,9 @@ namespace prj_sales
             services.AddControllersWithViews();
 
             services.AddDbContext<ApplicationDbContext>( options => 
-                options.UseSqlServer(
+                options
+                    .UseLoggerFactory(SalesLoggerFactory)
+                    .UseSqlServer(
                     "Server=localhost; Database=CursoCSharpVendasSimples; Trusted_Connection=False; MultipleActiveResultSets=True; User Id=sa;Password=@agesune1;"));
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>(); //para trabalhar com sessão

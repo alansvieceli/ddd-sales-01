@@ -13,6 +13,6 @@ namespace prj_sales.Entities
         public String Email { get; set; }
         public String Telefone { get; set; }
         
-        public ICollection<VendaProdutos> Vendas { get; set; }
+        public ICollection<Venda> Vendas { get; set; }
     }
 }
