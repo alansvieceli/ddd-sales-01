@@ -1,4 +1,28 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Http;
+@inject IHttpContextAccessor httpContext;
+
+@{
+    var logado = "";
+    var usuarioNome = "";
+    try 
+    {
+        logado = httpContext.HttpContext.Session.GetInt32(prj_sales.Helpers.Sessao.LOGADO).ToString();
+        if (logado == "1")
+        {
+            usuarioNome = httpContext.HttpContext.Session.GetString(prj_sales.Helpers.Sessao.USUARIO_NOME);
+        }
+        else
+        {
+            httpContext.HttpContext.Response.Redirect("/Login");
+        }
+    } 
+    catch
+    {
+        httpContext.HttpContext.Response.Redirect("/Login");
+    }
+}
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
@@ -28,6 +52,9 @@
                         <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                     </li>
                 </ul>
+            </div>
+            <div>
+                Olá @usuarioNome (@Html.ActionLink("Sair", "Index", "Login", new {id = 0}))
             </div>
         </div>
     </nav>

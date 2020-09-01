@@ -56,7 +56,7 @@ namespace prj_sales.Controllers
                     Data = (DateTime) entidade.Data,
                     Total = entidade.Total,
                     CodigoCliente = (int) entidade.CodigoCliente,
-                    //Produtos = JsonConvert.DeserializeObject<ICollection<VendaProdutos>>(entidade.JsonProdutos)
+                    Produtos = JsonConvert.DeserializeObject<ICollection<VendaProdutos>>(entidade.JsonProdutos)
                 };
 
                 if (entidade.Codigo == null)

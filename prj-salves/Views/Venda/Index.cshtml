@@ -20,10 +20,10 @@
     @foreach (var item in Model)
     {
         <tr>
-            <td>@Html.ActionLink(item.Codigo.ToString(), "Cadastro", "Venda", new {id = item.Codigo})</td>
-            <td>@Html.ActionLink(item.Data.ToString(), "Cadastro", "Venda", new {id = item.Codigo})</td>
-            <td>@Html.ActionLink(item.Cliente.Nome, "Cadastro", "Venda", new {id = item.Codigo})</td>
-            <td>@Html.ActionLink(item.Total.ToString(), "Cadastro", "Venda", new {id = item.Codigo})</td>
+            <td>@Html.DisplayFor(modelItem => item.Codigo)</td>
+            <td>@Html.DisplayFor(modelItem => item.Data)</td>
+            <td>@Html.DisplayFor(modelItem => item.Cliente.Nome)</td>
+            <td>@Html.DisplayFor(modelItem => item.Total)</td>
         </tr>
     }
     </tbody>

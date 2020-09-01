@@ -66,6 +66,8 @@ namespace prj_sales
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.UseCookiePolicy();
+            app.UseSession();
 
             app.UseRouting();
 
@@ -75,7 +77,7 @@ namespace prj_sales
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Login}/{action=Index}/{id?}");
             });
         }
     }
