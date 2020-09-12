@@ -42,10 +42,10 @@ namespace prj_sales
             services.AddDbContext<ApplicationDbContext>( options => 
                 options
                     .UseLoggerFactory(SalesLoggerFactory)
-                    .UseSqlServer(
-                    "Server=localhost; Database=CursoCSharpVendasSimples; Trusted_Connection=False; MultipleActiveResultSets=True; User Id=sa;Password=@agesune1;"));
+                    .UseSqlServer(Configuration.GetConnectionString("Sistema")));
 
-            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>(); //para trabalhar com sessão
+            //services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>(); //para trabalhar com sessão
+            services.AddHttpContextAccessor();
             services.AddSession();
 
         }
@@ -59,7 +59,7 @@ namespace prj_sales
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
+                app.UseExceptionHandler("/Error");
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
