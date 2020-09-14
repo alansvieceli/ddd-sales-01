@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <AssemblyName>DDD.Sales.Domain</AssemblyName>
+        <RootNamespace>DDD.Sales.Domain</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Folder Include="Services\Cliente" />
+      <Folder Include="Services\Produto" />
+      <Folder Include="Services\Usuario" />
+      <Folder Include="Services\Venda" />
+    </ItemGroup>
+
+</Project>
