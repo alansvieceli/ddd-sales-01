@@ -2,7 +2,7 @@ using DDD.Sales.Application.Services;
 using DDD.Sales.Application.Services.Interfaces;
 using DDD.Sales.Domain.Interfaces;
 using DDD.Sales.Domain.Repository;
-using DDD.Sales.Domain.Services.Categoria;
+using DDD.Sales.Domain.Services;
 using DDD.Sales.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;

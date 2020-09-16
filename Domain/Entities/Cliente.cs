@@ -4,10 +4,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace DDD.Sales.Domain.Entities
 {
-    public class Cliente
+    public class Cliente : EntityBase
     {
-        [Key]
-        public int?  Codigo { get; set; }
         public String Nome { get; set; }
         public String CNPJ_CPF { get; set; }
         public String Email { get; set; }

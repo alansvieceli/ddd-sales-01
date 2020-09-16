@@ -21,39 +21,15 @@ namespace DDD.Sales.Application.Controllers
         [HttpGet]
         public IActionResult Cadastro(int? id)
         {
-            /*
-            CategoriaViewModel viewModel = new CategoriaViewModel();
-            if (id != null)
-            {
-                var entidade = this._context.Categoria.Where(x => x.Codigo == id).FirstOrDefault();
-                viewModel.Codigo = entidade.Codigo;
-                viewModel.Descricao = entidade.Descricao;
-            }
-            */
-            return View(new CategoriaViewModel());
+            return View(this._service.Carregar(id));
         }
-/*
+        
         [HttpPost]
         public IActionResult Cadastro(CategoriaViewModel entidade)
         {
             if (ModelState.IsValid)
             {
-                Categoria obj = new Categoria()
-                {
-                    Codigo = entidade.Codigo,
-                    Descricao = entidade.Descricao
-                };
-
-                if (entidade.Codigo == null)
-                {
-                    this._context.Add(obj);
-                }
-                else
-                {
-                    this._context.Entry(obj).State = EntityState.Modified;
-                }
-
-                this._context.SaveChanges();
+                this._service.Cadastrar(entidade);
             }
             else
             {
@@ -62,16 +38,10 @@ namespace DDD.Sales.Application.Controllers
 
             return RedirectToAction("Index");
         }
-*/
         [HttpGet]
         public IActionResult Excluir(int id)
         {
-            /*
-            var entidade = this._context.Categoria.Where(x => x.Codigo == id).FirstOrDefault();
-            this._context.Attach(entidade);
-            this._context.Remove(entidade);
-            this._context.SaveChanges();
-            */
+            this._service.Excluir(id);
             return RedirectToAction("Index");
         }
         

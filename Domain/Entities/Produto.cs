@@ -5,10 +5,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DDD.Sales.Domain.Entities
 {
-    public class Produto
+    public class Produto : EntityBase
     {
-        [Key]
-        public int?  Codigo { get; set; }
         public String Descricao { get; set; }
         public double Quantidade { get; set; }
         public decimal Valor { get; set; }

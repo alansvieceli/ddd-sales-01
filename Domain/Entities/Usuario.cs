@@ -3,10 +3,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace DDD.Sales.Domain.Entities
 {
-    public class Usuario
+    public class Usuario : EntityBase
     {
-        [Key]
-        public int?  Codigo { get; set; }
         public String Nome { get; set; }
         public String Email { get; set; }
         public String Senha { get; set; }

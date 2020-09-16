@@ -2,7 +2,7 @@
 using DDD.Sales.Domain.Interfaces;
 using DDD.Sales.Domain.Repository;
 
-namespace DDD.Sales.Domain.Services.Categoria
+namespace DDD.Sales.Domain.Services
 {
     public class CategoriaService : ICategoriaService
     {
@@ -20,17 +20,17 @@ namespace DDD.Sales.Domain.Services.Categoria
 
         public Entities.Categoria CarregarRegistro(int id)
         {
-            throw new System.NotImplementedException();
+            return this._repository.Read(id);
         }
 
         public void Cadastrar(Entities.Categoria categoria)
         {
-            throw new System.NotImplementedException();
+            this._repository.Create(categoria);
         }
 
         public void Excluir(int id)
         {
-            throw new System.NotImplementedException();
+            this._repository.Delete(id);
         }
     }
 }
