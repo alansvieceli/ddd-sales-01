@@ -1,7 +1,9 @@
-﻿namespace DDD.Sales.Domain.Interfaces
+﻿using DDD.Sales.Domain.Entities;
+
+namespace DDD.Sales.Domain.Interfaces
 {
-    public class IProdutoService
+    public interface IProdutoService: ICrudService<Produto>
     {
-        
+        decimal GetPrice(int id);
     }
 }

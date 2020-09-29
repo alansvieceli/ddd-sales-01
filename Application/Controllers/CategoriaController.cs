@@ -25,15 +25,15 @@ namespace DDD.Sales.Application.Controllers
         }
         
         [HttpPost]
-        public IActionResult Cadastro(CategoriaViewModel entidade)
+        public IActionResult Cadastro(CategoriaViewModel view)
         {
             if (ModelState.IsValid)
             {
-                this._service.Cadastrar(entidade);
+                this._service.Cadastrar(view);
             }
             else
             {
-                return View(entidade);
+                return View(view);
             }
 
             return RedirectToAction("Index");

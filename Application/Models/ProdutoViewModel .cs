@@ -18,6 +18,8 @@ namespace DDD.Sales.Application.Models
         public decimal Valor { get; set; }
         [Required(ErrorMessage = "Faltou definir categoria do produto.")]
         public int? CodigoCategoria { get; set; }
+        public string DescricaoCategoria { get; set; }
         public IEnumerable<SelectListItem> ListaCategorias { get; set; }
+        
     }
 }

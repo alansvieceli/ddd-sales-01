@@ -55,6 +55,18 @@ namespace DDD.Sales.Application
             services.AddScoped<ICategoriaRepository, CategoriaRepository>();
             services.AddScoped<ICategoriaService, CategoriaService>(); 
             services.AddScoped<ICategoriaAppService, CategoriaAppService>();
+            
+            services.AddScoped<IClienteRepository, ClienteRepository>();
+            services.AddScoped<IClienteService, ClienteService>(); 
+            services.AddScoped<IClienteAppService, ClienteAppService>();
+            
+            services.AddScoped<IProdutoRepository, ProdutoRepository>();
+            services.AddScoped<IProdutoService, ProdutoService>(); 
+            services.AddScoped<IProdutoAppService, ProdutoAppService>();
+            
+            services.AddScoped<IVendaRepository, VendaRepository>();
+            services.AddScoped<IVendaService, VendaService>(); 
+            services.AddScoped<IVendaAppService, VendaAppService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

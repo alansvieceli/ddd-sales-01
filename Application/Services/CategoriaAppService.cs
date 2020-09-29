@@ -5,17 +5,16 @@ using DDD.Sales.Application.Services.Interfaces;
 using DDD.Sales.Domain.Entities;
 using DDD.Sales.Domain.Interfaces;
 
-
 namespace DDD.Sales.Application.Services
 {
     public class CategoriaAppService: ICategoriaAppService
     {
+        private readonly ICategoriaService _service;
+        
         public CategoriaAppService(ICategoriaService service)
         {
             this._service = service;
         }
-
-        private readonly ICategoriaService _service;
         
         public IEnumerable<CategoriaViewModel> Listagem()
         {
@@ -63,7 +62,6 @@ namespace DDD.Sales.Application.Services
         {
             this._service.Excluir(id);
         }
-
-
+        
     }
 }

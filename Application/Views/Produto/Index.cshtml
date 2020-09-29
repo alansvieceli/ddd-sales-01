@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Domain.Entities.Produto>;
+﻿@model IEnumerable<DDD.Sales.Application.Models.ProdutoViewModel>;
 @{
     ViewData["Title"] = "Produtos";
 }
@@ -25,7 +25,7 @@
             <td>@Html.ActionLink(item.Descricao, "Cadastro", "Produto", new {id = item.Codigo})</td>
             <td>@Html.ActionLink(item.Quantidade.ToString(), "Cadastro", "Produto", new {id = item.Codigo})</td>
             <td>@Html.ActionLink(item.Valor.ToString(), "Cadastro", "Produto", new {id = item.Codigo})</td>
-            <td>@Html.ActionLink(item.Categoria.Descricao, "Cadastro", "Produto", new {id = item.Codigo})</td>
+            <td>@Html.ActionLink(item.DescricaoCategoria, "Cadastro", "Produto", new {id = item.Codigo})</td>
         </tr>
     }
     </tbody>

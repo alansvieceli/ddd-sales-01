@@ -18,9 +18,11 @@ namespace Domain.Controllers
         
         public IActionResult Grafico()
         {
-
+/*
             var lista = this._context.VendaProdutos
-                .Include(vp => vp.Produto)
+                .Include(vp => vp.Produto)services.AddScoped<ICategoriaRepository, CategoriaRepository>();
+            services.AddScoped<ICategoriaService, CategoriaService>(); 
+            services.AddScoped<ICategoriaAppService, CategoriaAppService>();
                 .AsEnumerable()
                 .GroupBy(vp => vp.CodigoProduto)
                 .Select(grp => new 
@@ -46,8 +48,8 @@ namespace Domain.Controllers
             ViewBag.Valores = valores;
             ViewBag.Labels = labels;
             ViewBag.Cores = cores;
-            
-            return View(lista);
+            */
+            return View(null);
         }
     }
 }

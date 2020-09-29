@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Domain.Entities.Venda>;
+﻿@model IEnumerable<DDD.Sales.Application.Models.VendaViewModel>;
 @{
     ViewData["Title"] = "Vendas";
 }
@@ -22,7 +22,7 @@
         <tr>
             <td>@Html.DisplayFor(modelItem => item.Codigo)</td>
             <td>@Html.DisplayFor(modelItem => item.Data)</td>
-            <td>@Html.DisplayFor(modelItem => item.Cliente.Nome)</td>
+            <td>@Html.DisplayFor(modelItem => item.DescricaoCliente)</td>
             <td>@Html.DisplayFor(modelItem => item.Total)</td>
         </tr>
     }

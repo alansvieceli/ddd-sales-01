@@ -7,8 +7,8 @@ namespace DDD.Sales.Repository.DAL
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
-            
         }
+        
         public DbSet<Usuario> Usuario { get; set; }
         public DbSet<Categoria> Categoria { get; set; }
         public DbSet<Produto> Produto { get; set; }
@@ -48,7 +48,6 @@ namespace DDD.Sales.Repository.DAL
             modelBuilder.Entity<VendaProdutos>()
                 .Property(p => p.ValorUnitario)
                 .HasColumnType("decimal(9,2)");
-
         }
     }
 }

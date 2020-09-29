@@ -1,85 +1,50 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using DDD.Sales.Application.DAL;
-using DDD.Sales.Application.Models;
-using Domain.Entities;
+﻿using DDD.Sales.Application.Models;
+using DDD.Sales.Application.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
-namespace Domain.Controllers
+namespace DDD.Sales.Application.Controllers
 {
     public class ClienteController : Controller
     {
-        private readonly ApplicationDbContext _context;
-        
-        public ClienteController(ApplicationDbContext context)
+        private readonly IClienteAppService _service;
+
+        public ClienteController(IClienteAppService service)
         {
-            this._context = context;
+            this._service = service;
         }
+        
         public IActionResult Index()
         {
-            IEnumerable<Cliente> lista = this._context.Cliente.ToList();
-            this._context.Dispose();
-            return View(lista);
+            return View(this._service.Listagem());
         }
         
         [HttpGet]
         public IActionResult Cadastro(int? id)
         {
-            ClienteViewModel viewModel = new ClienteViewModel();
-            if (id != null)
-            {
-                var entidade = this._context.Cliente.Where(x => x.Codigo == id).FirstOrDefault();
-                viewModel.Codigo = entidade.Codigo;
-                viewModel.Nome = entidade.Nome;
-                viewModel.CNPJ_CPF = entidade.CNPJ_CPF;
-                viewModel.Email = entidade.Email;
-                viewModel.Telefone = entidade.Telefone;
-            }
-            return View(viewModel);
+            return View(this._service.Carregar(id));
         }
         
         [HttpPost]
-        public IActionResult Cadastro(ClienteViewModel entidade)
+        public IActionResult Cadastro(ClienteViewModel view)
         {
             if (ModelState.IsValid)
             {
-                Cliente obj = new Cliente()
-                {
-                    Codigo = entidade.Codigo,
-                    Nome = entidade.Nome,
-                    CNPJ_CPF = entidade.CNPJ_CPF,
-                    Email = entidade.Email,
-                    Telefone = entidade.Telefone
-                };
-
-                if (entidade.Codigo == null)
-                {
-                    this._context.Add(obj);
-                }
-                else
-                {
-                    this._context.Entry(obj).State = EntityState.Modified;
-                }
-
-                this._context.SaveChanges();
+                this._service.Cadastrar(view);
             }
             else
             {
-                return View(entidade);
+                return View(view);
             }
 
             return RedirectToAction("Index");
         }
-
         [HttpGet]
         public IActionResult Excluir(int id)
         {
-            var entidade = this._context.Cliente.Where(x => x.Codigo == id).FirstOrDefault();
-            this._context.Attach(entidade);
-            this._context.Remove(entidade);
-            this._context.SaveChanges();
+            this._service.Excluir(id);
             return RedirectToAction("Index");
         }
+        
     }
+    
 }
