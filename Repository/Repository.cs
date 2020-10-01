@@ -9,46 +9,46 @@ namespace DDD.Sales.Repository
     public abstract class Repository<T> : DbContext, IRepository<T>
         where T: EntityBase, new()
     {
-        protected readonly DbContext _context;
-        protected readonly DbSet<T> _dbSet;
+        protected readonly DbContext Context;
+        protected readonly DbSet<T> DbSet;
 
         public Repository(DbContext context)
         {
-            this._context = context;
-            this._dbSet = this._context.Set<T>();
+            this.Context = context;
+            this.DbSet = this.Context.Set<T>();
         }
         
         public virtual void Create(T entity)
         {
             if (entity.Codigo == null)
             {
-                this._dbSet.Add(entity);
+                this.DbSet.Add(entity);
             }
             else
             {
-                this._context.Entry(entity).State = EntityState.Modified;
+                this.Context.Entry(entity).State = EntityState.Modified;
             }
-            this._context.SaveChanges();
+            this.Context.SaveChanges();
         }
 
         public virtual T Read(int id)
         {
-            return this._dbSet.FirstOrDefault(x => x.Codigo == id);
+            return this.DbSet.FirstOrDefault(x => x.Codigo == id);
         }
 
         public virtual void Delete(int id)
         {
-            var entidade = this._dbSet.FirstOrDefault(x => x.Codigo == id);
+            var entidade = this.DbSet.FirstOrDefault(x => x.Codigo == id);
             if (entidade != null) {
-                this._dbSet.Attach(entidade);
-                this._dbSet.Remove(entidade);
-                this._context.SaveChanges();
+                this.DbSet.Attach(entidade);
+                this.DbSet.Remove(entidade);
+                this.Context.SaveChanges();
             }
         }
 
         public virtual IEnumerable<T> Read()
         {
-            return this._dbSet.AsNoTracking().ToList();
+            return this.DbSet.AsNoTracking().ToList();
         }
     }
 }

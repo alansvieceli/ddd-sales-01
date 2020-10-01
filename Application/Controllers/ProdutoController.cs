@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using DDD.Sales.Application.Models;
+﻿using DDD.Sales.Application.Models;
 using DDD.Sales.Application.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace DDD.Sales.Application.Controllers
 {

@@ -1,11 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using DDD.Sales.Application.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Domain.Entities;
 
-namespace Domain.Controllers
+namespace DDD.Sales.Application.Controllers
 {
     public class HomeController : Controller
     {

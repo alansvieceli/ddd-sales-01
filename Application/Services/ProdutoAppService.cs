@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using DDD.Sales.Application.Models;
 using DDD.Sales.Application.Services.Interfaces;
 using DDD.Sales.Domain.Entities;
 using DDD.Sales.Domain.Interfaces;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore.Storage;
 
 namespace DDD.Sales.Application.Services
 {

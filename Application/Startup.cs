@@ -38,11 +38,6 @@ namespace DDD.Sales.Application
         {
             services.AddControllersWithViews();
 
-            services.AddDbContext<DDD.Sales.Application.DAL.ApplicationDbContext>( options => 
-                options
-                    .UseLoggerFactory(SalesLoggerFactory)
-                    .UseSqlServer(Configuration.GetConnectionString("Sistema")));
-          
             services.AddDbContext<DDD.Sales.Repository.DAL.ApplicationDbContext>( options => 
                 options
                     .UseLoggerFactory(SalesLoggerFactory)
@@ -65,8 +60,14 @@ namespace DDD.Sales.Application
             services.AddScoped<IProdutoAppService, ProdutoAppService>();
             
             services.AddScoped<IVendaRepository, VendaRepository>();
+            services.AddScoped<IVendaProdutosRepository, VendaProdutosRepository>();
+            
             services.AddScoped<IVendaService, VendaService>(); 
             services.AddScoped<IVendaAppService, VendaAppService>();
+            
+            services.AddScoped<IUsuarioRepository, UsuarioRepository>();
+            services.AddScoped<IUsuarioService, UsuarioService>(); 
+            services.AddScoped<IUsuarioAppService, UsuarioAppService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

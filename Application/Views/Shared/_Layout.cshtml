@@ -1,4 +1,5 @@
 ﻿@using Microsoft.AspNetCore.Http;
+@using Infra.Helpers
 @inject IHttpContextAccessor httpContext;
 
 @{
@@ -6,10 +7,10 @@
     var usuarioNome = "";
     try 
     {
-        logado = httpContext.HttpContext.Session.GetInt32(Domain.Helpers.Sessao.LOGADO).ToString();
+        logado = httpContext.HttpContext.Session.GetInt32(Sessao.LOGADO).ToString();
         if (logado == "1")
         {
-            usuarioNome = httpContext.HttpContext.Session.GetString(Domain.Helpers.Sessao.USUARIO_NOME);
+            usuarioNome = httpContext.HttpContext.Session.GetString(Sessao.USUARIO_NOME);
         }
         else
         {

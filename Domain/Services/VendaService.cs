@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using DDD.Sales.Domain.DTO;
 using DDD.Sales.Domain.Interfaces;
 using DDD.Sales.Domain.Repository;
 
@@ -7,10 +8,12 @@ namespace DDD.Sales.Domain.Services
     public class VendaService : IVendaService
     {
         private readonly IVendaRepository _repository;
+        private readonly IVendaProdutosRepository _repositoryVendaProdutos;
 
-        public VendaService(IVendaRepository repository)
+        public VendaService(IVendaRepository repository, IVendaProdutosRepository repositoryVendaProdutos)
         {
             this._repository = repository;
+            this._repositoryVendaProdutos = repositoryVendaProdutos;
         }
         
         public IEnumerable<Entities.Venda> Listagem()
@@ -31,6 +34,11 @@ namespace DDD.Sales.Domain.Services
         public void Excluir(int id)
         {
             this._repository.Delete(id);
+        }
+
+        public IEnumerable<VendaProdutosDto> ListaGrafico()
+        {
+            return this._repositoryVendaProdutos.ListaGrafico();
         }
     }
 }

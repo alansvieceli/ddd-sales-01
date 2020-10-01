@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace Domain.Controllers
+namespace DDD.Sales.Application.Controllers
 {
     public class ErrorController : Controller
     {

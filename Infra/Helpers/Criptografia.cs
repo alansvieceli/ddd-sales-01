@@ -2,7 +2,7 @@
 using System.Security.Cryptography;
 using System.Text;
 
-namespace Domain.Helpers
+namespace Infra.Helpers
 {
     public class Criptografia
     {

@@ -1,31 +1,22 @@
-﻿using System.Linq;
-using DDD.Sales.Application.DAL;
-using DDD.Sales.Application.Models;
-using Domain.Helpers;
-using Microsoft.AspNetCore.Http;
+﻿using DDD.Sales.Application.Models;
+using DDD.Sales.Application.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.SqlServer.Migrations.Internal;
 
-namespace Domain.Controllers
+namespace DDD.Sales.Application.Controllers
 {
-    public class LoginController : Controller
+    public class                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               LoginController : Controller
     {
-        private readonly ApplicationDbContext _context;
-        private readonly IHttpContextAccessor _httpContext;
+        private readonly IUsuarioAppService _service;
 
-        public LoginController(ApplicationDbContext context, IHttpContextAccessor httpContext)
+        public LoginController(IUsuarioAppService service)
         {
-            this._context = context;
-            this._httpContext = httpContext;
+            this._service = service;
         }
         
         public IActionResult Index(int? id)
         {
             ViewData["ErroLogin"] = string.Empty;
-            if ((id != null) && (id == 0))
-            {
-                this._httpContext.HttpContext.Session.Clear();
-            }
+            this._service.VerificarLogin(id);
             return View();
         }
         
@@ -35,29 +26,18 @@ namespace Domain.Controllers
             ViewData["ErroLogin"] = string.Empty;
             if (ModelState.IsValid)
             {
-                var senha = Criptografia.GetMd5Hash(model.Senha);
-                var usuario = this._context.Usuario.Where(u => u.Email == model.Email && u.Senha == senha)
-                    .FirstOrDefault();
-
-                if (usuario == null)
+                if (this._service.ValidarLogin(model.Email, model.Senha))
                 {
-                    ViewData["ErroLogin"] = "E-mail ou senha são inválidos.";
-                    return View(model);
-                } else
-                {
-                    //colocar os dados do usuário na sessão
-                    this._httpContext.HttpContext.Session.SetInt32(Sessao.USUARIO_CODIGO, (int) usuario.Codigo);
-                    this._httpContext.HttpContext.Session.SetString(Sessao.USUARIO_NOME, usuario.Nome);
-                    this._httpContext.HttpContext.Session.SetString(Sessao.USUARIO_EMAIL, usuario.Email);
-                    this._httpContext.HttpContext.Session.SetInt32(Sessao.LOGADO, 1);
                     return RedirectToAction("Index", "Home");
                 }
+                
+                ViewData["ErroLogin"] = "E-mail ou senha são inválidos.";
+                return View(model);
             }
             else
             {
                 return View(model);
             }
-            
         }
     }
 }

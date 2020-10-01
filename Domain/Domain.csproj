@@ -6,4 +6,8 @@
         <RootNamespace>DDD.Sales.Domain</RootNamespace>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Infra\Infra.csproj" />
+    </ItemGroup>
+
 </Project>

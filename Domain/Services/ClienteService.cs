@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using DDD.Sales.Domain.Entities;
 using DDD.Sales.Domain.Interfaces;
 using DDD.Sales.Domain.Repository;
 
@@ -13,17 +14,17 @@ namespace DDD.Sales.Domain.Services
             this._repository = repository;
         }
         
-        public IEnumerable<Entities.Cliente> Listagem()
+        public IEnumerable<Cliente> Listagem()
         {
             return this._repository.Read();
         }
 
-        public Entities.Cliente CarregarRegistro(int id)
+        public Cliente CarregarRegistro(int id)
         {
             return this._repository.Read(id);
         }
 
-        public void Cadastrar(Entities.Cliente cliente)
+        public void Cadastrar(Cliente cliente)
         {
             this._repository.Create(cliente);
         }

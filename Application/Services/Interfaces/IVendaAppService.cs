@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using DDD.Sales.Application.Models;
+using DDD.Sales.Domain.DTO;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace DDD.Sales.Application.Services.Interfaces
@@ -17,5 +18,7 @@ namespace DDD.Sales.Application.Services.Interfaces
         IEnumerable<SelectListItem> GetListaProdutos();
 
         IEnumerable<SelectListItem> GetListaClientes();
+        
+        IEnumerable<VendaProdutosDto> ListaGrafico();
     }
 }

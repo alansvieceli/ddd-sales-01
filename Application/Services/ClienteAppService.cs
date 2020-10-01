@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using DDD.Sales.Application.Models;
 using DDD.Sales.Application.Services.Interfaces;
 using DDD.Sales.Domain.Entities;

@@ -1,37 +1,22 @@
 ﻿using System;
-using System.Linq;
-using DDD.Sales.Application.DAL;
+using DDD.Sales.Application.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
-namespace Domain.Controllers
+namespace DDD.Sales.Application.Controllers
 {
     public class RelatorioController : Controller
     {
         
-        private readonly ApplicationDbContext _context;
+        private readonly IVendaAppService _service;
         
-        public RelatorioController(ApplicationDbContext context)
+        public RelatorioController(IVendaAppService service)
         {
-            this._context = context;
+            this._service = service;
         }
         
         public IActionResult Grafico()
         {
-/*
-            var lista = this._context.VendaProdutos
-                .Include(vp => vp.Produto)services.AddScoped<ICategoriaRepository, CategoriaRepository>();
-            services.AddScoped<ICategoriaService, CategoriaService>(); 
-            services.AddScoped<ICategoriaAppService, CategoriaAppService>();
-                .AsEnumerable()
-                .GroupBy(vp => vp.CodigoProduto)
-                .Select(grp => new 
-                {
-                    CodigoProduto = grp.First().CodigoProduto,
-                    Descricao = grp.First().Produto.Descricao,
-                    TotalVendido = grp.Sum( z => z.Quantidade)
-                    
-                }).ToList();
+            var lista = this._service.ListaGrafico();
 
             string valores = string.Empty;
             string labels = string.Empty;
@@ -48,7 +33,7 @@ namespace Domain.Controllers
             ViewBag.Valores = valores;
             ViewBag.Labels = labels;
             ViewBag.Cores = cores;
-            */
+            
             return View(null);
         }
     }

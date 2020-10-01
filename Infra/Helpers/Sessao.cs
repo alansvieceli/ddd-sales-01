@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Domain.Helpers
+namespace Infra.Helpers
 {
     public class Sessao
     {

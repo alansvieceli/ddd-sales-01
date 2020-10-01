@@ -16,12 +16,12 @@ namespace DDD.Sales.Repository
         
         public new IEnumerable<Produto> Read()
         {
-            return base._dbSet.Include( p => p.Categoria).AsNoTracking().ToList();
+            return base.DbSet.Include( p => p.Categoria).AsNoTracking().ToList();
         }
 
         public decimal GetPrice(int id)
         {
-            return base._dbSet.Where(x => x.Codigo == id).Select(x => x.Valor).FirstOrDefault();
+            return base.DbSet.Where(x => x.Codigo == id).Select(x => x.Valor).FirstOrDefault();
         }
     }
 }
