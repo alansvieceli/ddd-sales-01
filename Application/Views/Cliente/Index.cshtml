@@ -1,0 +1,32 @@
+﻿@model IEnumerable<DDD.Sales.Application.Models.ClienteViewModel>;
+@{
+    ViewData["Title"] = "Cliente";
+}
+
+<h2>@ViewData["Title"]</h2>
+<hr />
+<button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("Cadastro", "Cliente")'">Inserir</button>
+<hr />
+<table class="table table-bordered">
+    <thead>
+    <tr style="background-color: #f6f6f6">
+        <th>Código</th>
+        <th>Nome</th>
+        <th>CNPJ/CPF</th>
+        <th>Telefone</th>
+        <th>E-mail</th>
+    </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.ActionLink(item.Codigo.ToString(), "Cadastro", "Cliente", new {id = item.Codigo})</td>
+                <td>@Html.ActionLink(item.Nome, "Cadastro", "Cliente", new {id = item.Codigo})</td>
+                <td>@Html.ActionLink(item.CNPJ_CPF, "Cadastro", "Cliente", new {id = item.Codigo})</td>
+                <td>@Html.ActionLink(item.Telefone, "Cadastro", "Cliente", new {id = item.Codigo})</td>
+                <td>@Html.ActionLink(item.Email, "Cadastro", "Cliente", new {id = item.Codigo})</td>
+            </tr>
+        }
+    </tbody>
+</table>
